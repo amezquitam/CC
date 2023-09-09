@@ -24,11 +24,6 @@ public:
     };
 
     States apply(char c) {
-        if (c == ' ' || c == '\t' || c == '\n') {
-            prevState = state;
-            state = end;
-            return state;
-        }
         // obtiene a que alfabeto pertence el caracter c
         Alphabet alp = getAlphabet(c);
         assert(alp != unknown);
