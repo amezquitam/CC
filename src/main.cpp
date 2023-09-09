@@ -92,7 +92,7 @@ class IdentifierTokens {
 public:
     Vector<Token> identifyTokens(String cCode) {
         Vector<Token> identifiedTokens{};
-        String word{};
+        String currentWord{}; // (token)
         TCA tokensClasifier;
 
         for (int i = 0; i < cCode.length();) {
@@ -103,17 +103,17 @@ public:
                 auto prevState = tokensClasifier.getPrevState();
 
                 if (prevState == TCA::States::ID) {
-                    int rwi = getReservedWordIndex(word);
+                    int rwi = getReservedWordIndex(currentWord);
                     if (rwi != -1) {
                         identifiedTokens.push_back(reservedWords[rwi]);
                     }
                 }
 
-                word.clear();
+                currentWord.clear();
                 tokensClasifier.reset();
             }
             else {
-                word += letter;
+                currentWord += letter;
             }
 
             if (letter != ' ' || letter != '\t' || letter != '\n') {
