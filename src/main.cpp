@@ -84,6 +84,11 @@ private:
         std::string_view symbols = "<>()[]{},;=!+-*/|&";
         return std::find(symbols.begin(), symbols.end(), c) != symbols.end();
     }
+
+    bool isSpace(char c) {
+        std::string_view symbols = "\t\n ";
+        return std::find(symbols.begin(), symbols.end(), c) != symbols.end();
+    }
 };
 
 
