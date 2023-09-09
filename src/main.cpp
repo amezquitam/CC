@@ -52,12 +52,12 @@ public:
     }
 
 private:
-    static constexpr States transition[4][3]{
-        //  letter  numbers   symbols
-            {ID,    integer,  symbol},    // initial
-            {end,   integer,  end},       // integer
-            {ID,    ID,       end},       // ID
-            {end,   end,      symbol}     // symbol
+    static constexpr States transition[4][4]{
+        //  letter  numbers   symbols   spaces
+            {ID,    integer,  symbol,   end},  // initial
+            {end,   integer,  end,      end},  // integer
+            {ID,    ID,       end,      end},  // ID
+            {end,   end,      symbol,   end},  // symbol
     };
 
     States state = initial;
