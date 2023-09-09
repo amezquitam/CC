@@ -20,7 +20,7 @@ public:
     };
 
     enum Alphabet {
-        letters, numbers, symbols, unknown
+        letters, numbers, symbols, spaces, unknown
     };
 
     States apply(char c) {
@@ -69,6 +69,7 @@ private:
         if (isLetter(c)) return letters;
         if (isNumber(c)) return numbers;
         if (isSymbol(c)) return symbols;
+        if (isSpace(c)) return spaces;
         else return unknown;
     }
 
